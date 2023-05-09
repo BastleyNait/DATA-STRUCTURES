@@ -2,32 +2,29 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 
 public class Archivos {
-    private int numPregunta;
-    private int numDelinea = 0;
+    // ...
 
-    public String leerTxt(String ruta) {
-        //este método tiene como atributo una string la cual es la ubicacion del archivo
-        //seguidamente lo lo am
+    public String leerArchivo(String ruta) {
         String texto = "";
         try {
             BufferedReader bf = new BufferedReader(new FileReader(ruta));
             String linea;
-            String temp = "";
-            int contador = 1;
-            while (numDelinea != 0 && numDelinea - 6 < numPregunta * 6) {
-                bf.readLine();
-                numDelinea++;
+            while ((linea = bf.readLine()) != null) {
+                texto += linea + "\n";
             }
-            while ((linea = bf.readLine()) != null && contador < 6) {
-                temp += linea + "\n";
-                contador++;
-            }
-            numDelinea += contador;
-            texto = temp;
-            numPregunta++;
         } catch (Exception e) {
             System.err.println("No se encontró el archivo en la ruta especificada");
         }
         return texto;
+    }
+
+    public String leerPregunta(String[] lineas, int numPregunta) {
+        String pregunta = "";
+        int inicio = numPregunta * 6;
+        for (int i = inicio; i < inicio + 6; i++) {
+            pregunta += "\n" + lineas[i];
+        }
+        System.out.println("\b");
+        return pregunta;
     }
 }
