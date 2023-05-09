@@ -1,0 +1,1 @@
+###Mi trabajo consiste en hacer un progama al cual le damos el archivo TestdeIQ.txt el cual contiene un cuestionario de opcion multiple, al fina tiene que dar el resultado de cuanto puntaje logro sacar y cuanto aproximadamente es el iq del que realizo la prueba
