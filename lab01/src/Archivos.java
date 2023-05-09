@@ -1,4 +1,3 @@
-import java.awt.*;
 import java.io.BufferedReader;
 import java.io.FileReader;
 
@@ -14,15 +13,21 @@ public class Archivos {
             BufferedReader bf = new BufferedReader(new FileReader(ruta));
             String linea;
             String temp = "";
-            int contador = 0;
-            while ((linea = bf.readLine()) != null && contador < 6 ) {
+            int contador = 1;
+            while (numDelinea != 0 && numDelinea - 6 < numPregunta * 6) {
+                bf.readLine();
+                numDelinea++;
+            }
+            while ((linea = bf.readLine()) != null && contador < 6) {
                 temp += linea + "\n";
                 contador++;
             }
+            numDelinea += contador;
             texto = temp;
             numPregunta++;
+        } catch (Exception e) {
+            System.err.println("No se encontró el archivo en la ruta especificada");
         }
-        catch (Exception e) {System.err.println("No se encontró el archivo en la ruta especificada");}
         return texto;
     }
 }

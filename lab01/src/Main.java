@@ -4,6 +4,8 @@ public class Main {
         Archivos testDeIq = new Archivos();
         String texto = testDeIq.leerTxt("TestdeIQ.txt");
         System.out.println(texto);
+        String texto2 = testDeIq.leerTxt("TestdeIQ.txt");
+        System.out.println(texto2);
     }
 
 }
