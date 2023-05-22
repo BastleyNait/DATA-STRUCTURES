@@ -1,23 +1,30 @@
 public class Node<T> {
-    private T data; // Propiedad para almacenar los datos de tipo T
-    private Node<T> next; // Propiedad para enlazar al siguiente nodo
+    private T data; // Almacena el valor de datos del nodo
+    private Node<T> nextNode; // Referencia al siguiente nodo en la lista
 
-    public Node(T data) {
-        this.data = data; // Inicializa la propiedad data con el valor proporcionado al crear el nodo
-        this.next = null; // Inicializa el enlace next como null, ya que al crear el nodo no hay ningún nodo siguiente
+    // Constructor que recibe el valor de datos del nodo
+    public Node(T value) {
+        data = value;
+        this.nextNode = null; // Inicialmente, el nodo no tiene un siguiente nodo, por lo que se establece como null
     }
+
+    // Método para obtener el valor de datos del nodo
     public T getData() {
-        return data; // Devuelve el valor almacenado en la propiedad data
+        return data;
     }
 
-    public void setData(T data) {
-        this.data = data; // Actualiza el valor almacenado en la propiedad data con el valor proporcionado
-    }
-    public Node<T> getNext() {
-        return next; // Devuelve el nodo siguiente enlazado al nodo actual
+    // Método para establecer el valor de datos del nodo
+    public void setData(T value) {
+        this.data = value;
     }
 
-    public void setNext(Node<T> next) {
-        this.next = next; // Establece el enlace al nodo siguiente con el nodo proporcionado
+    // Método para obtener la referencia al siguiente nodo
+    public Node<T> getNextNode() {
+        return nextNode;
+    }
+
+    // Método para establecer la referencia al siguiente nodo
+    public void setNextNode(Node<T> nextNode) {
+        this.nextNode = nextNode;
     }
 }
