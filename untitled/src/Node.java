@@ -5,7 +5,9 @@ public class Node<T> {
     // Constructor que recibe el valor de datos del nodo
     public Node(T value) {
         data = value;
-        this.nextNode = null; // Inicialmente, el nodo no tiene un siguiente nodo, por lo que se establece como null
+        this.nextNode = null; // Inicialmente,
+        // el nodo no tiene un
+        // siguiente nodo, por lo que se establece como null
     }
 
     // Método para obtener el valor de datos del nodo
