@@ -13,4 +13,11 @@ public class Node<T> {
     public void setData(T data) {
         this.data = data; // Actualiza el valor almacenado en la propiedad data con el valor proporcionado
     }
+    public Node<T> getNext() {
+        return next; // Devuelve el nodo siguiente enlazado al nodo actual
+    }
+
+    public void setNext(Node<T> next) {
+        this.next = next; // Establece el enlace al nodo siguiente con el nodo proporcionado
+    }
 }
