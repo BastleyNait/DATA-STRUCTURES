@@ -14,6 +14,7 @@ public class Main {
             String pregunta = testDeIq.leerPregunta(lineas, i);
             System.out.print(pregunta + "\nRespuesta: ");
             String respuesta = entrada.next();
+            //claves correctas
             String[] claves = {"b","a","a","a","a", "b","a","a", "b","a","b", "b","a","b", "b","a","b", "b","a","b"};
 
             // Comparar la respuesta con la respuesta esperada

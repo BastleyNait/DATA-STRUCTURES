@@ -1,4 +1,4 @@
-public class MyList<T> {
+public class MyList<T> extends List<T> {
     Node<T> root; // referencia al nodo inicial
     private int size; // tamaño de la lista
 
@@ -6,6 +6,10 @@ public class MyList<T> {
     public MyList() {
         root = null;
         size = 0;
+    }
+
+    public int size() {
+        return 0;
     }
 
     // Obtener la longitud de la lista
@@ -16,6 +20,10 @@ public class MyList<T> {
     // Verificar si la lista está vacía
     public boolean isEmpty() {
         return size == 0;
+    }
+
+    public boolean contains(Object o) {
+        return false;
     }
 
     // Imprimir la lista
@@ -29,7 +37,7 @@ public class MyList<T> {
     }
 
     // Añadir un elemento al final de la lista
-    public void add(T data) {
+    public boolean add(T data) {
         Node<T> newNode = new Node<>(data);
         if (isEmpty()) {
             root = newNode;
@@ -41,6 +49,11 @@ public class MyList<T> {
             current.setNextNode(newNode);
         }
         size++;
+        return false;
+    }
+
+    public boolean remove(Object o) {
+        return false;
     }
 
     // Obtener el elemento en un índice específico
