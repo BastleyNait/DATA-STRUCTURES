@@ -62,4 +62,14 @@ public class Bst<T extends Comparable<T>> {
         return current.getData();
     }
 
+    public T getMax() throws ExceptionNoFound {
+        if(isEmpty())
+            throw new ExceptionNoFound("el arbol esta vacio");
+        Node<T> current = root;
+        while (current.getRight() != null) {
+            current = current.getRight();
+        }
+        return current.getData();
+    }
+
 }
