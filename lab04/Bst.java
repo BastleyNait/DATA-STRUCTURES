@@ -51,4 +51,15 @@ public class Bst<T extends Comparable<T>> {
                 return search(x, current.getLeft());
         }
     }
+
+    public T getMin() throws ExceptionNoFound {
+        if(isEmpty())
+            throw new ExceptionNoFound("el arbol esta vacio");
+        Node<T> current = root;
+        while (current.getLeft() != null) {
+            current = current.getLeft();
+        }
+        return current.getData();
+    }
+
 }
