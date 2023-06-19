@@ -130,6 +130,18 @@ public class Bst<T extends Comparable<T>> {
 
         return current;
     }
+    public void inOrden(){
+        if(isEmpty())
+            System.out.println("arbol vaceo papay");
+        else
+            inOrden(this.root);
+    }
 
-
+    public void inOrden(Node<T> current) {
+        if (current.getLeft() != null)
+            inOrden(current.getLeft());
+        System.out.println(current);
+        if (current.getRight() != null)
+            inOrden(current.getRight());
+    }
 }
