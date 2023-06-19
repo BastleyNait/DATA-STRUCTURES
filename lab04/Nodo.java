@@ -1,14 +1,14 @@
-public class Node<T> {
+public class Nodo<T> {
     private T data;
 
-    private Node<T> left;
+    private Nodo<T> left;
 
-    private Node<T> right;
+    private Nodo<T> right;
 
-    public Node (T data) {
+    public Nodo(T data) {
         this(data,null,null);
     }
-    public Node(T data, Node<T> left,Node<T> right) {
+    public Nodo(T data, Nodo<T> left, Nodo<T> right) {
         this.data = data;
         this.left = left;
         this.right = right;
@@ -20,19 +20,19 @@ public class Node<T> {
     public void setData(T data) {
         this.data = data;
     }
-    public Node<T> getLeft() {
+    public Nodo<T> getLeft() {
         return this.left;
     }
 
-    public void setLeft(Node<T> left) {
+    public void setLeft(Nodo<T> left) {
         this.left = left;
     }
 
-    public Node<T> getRight() {
+    public Nodo<T> getRight() {
         return this.right;
     }
 
-    public void setRight(Node<T> right) {
+    public void setRight(Nodo<T> right) {
         this.right = right;
     }
 

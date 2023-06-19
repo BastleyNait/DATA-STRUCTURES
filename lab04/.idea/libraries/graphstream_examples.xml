@@ -1,0 +1,17 @@
+<component name="libraryTable">
+  <library name="graphstream_examples">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../../../PRACTICAS/EDA/graphstream_examples/gs-algo-2.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../PRACTICAS/EDA/graphstream_examples/gs-core-2.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../PRACTICAS/EDA/graphstream_examples/gs-ui-swing-2.0.jar!/" />
+      <root url="file://$PROJECT_DIR$/../../../PRACTICAS/EDA/graphstream_examples" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/../../../PRACTICAS/EDA/graphstream_examples/gs-ui-swing-2.0.jar!/" />
+      <root url="file://$PROJECT_DIR$/../../../PRACTICAS/EDA/graphstream_examples" />
+    </SOURCES>
+    <jarDirectory url="file://$PROJECT_DIR$/../../../PRACTICAS/EDA/graphstream_examples" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/../../../PRACTICAS/EDA/graphstream_examples" recursive="false" type="SOURCES" />
+  </library>
+</component>
