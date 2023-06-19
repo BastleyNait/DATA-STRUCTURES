@@ -1,9 +1,6 @@
 import org.graphstream.graph.Graph;
 import org.graphstream.graph.implementations.SingleGraph;
 import org.graphstream.graph.Node;
-
-import java.util.Iterator;
-
 import myExceptions.ExceptionNoFound;
 
 public class Test {
@@ -25,27 +22,30 @@ public class Test {
         System.setProperty("org.graphstream.ui", "swing");
         Graph graph = new SingleGraph("GraphStream_Example_03");
         graph.setAttribute("ui.stylesheet", styleSheet);
-        Nodo<Character> nodo = tree.getRoot();
-        Node root=graph.addNode(String.valueOf(nodo.getData()));
-        root.setAttribute("ui.label", root.getId());
-        while (nodo.getRight() != null || nodo.getLeft() != null) {
-            if (nodo.getRight() != null) {
-                Node right = graph.addNode(String.valueOf(nodo.getRight()));
-                right.setAttribute("ui.label", right.getId());
 
-                nodo = nodo.getRight();
-            } else if (nodo.getLeft() != null) {
-                Node left = graph.addNode(String.valueOf(nodo.getLeft()));
-                left.setAttribute("ui.label", left.getId());
-                nodo = nodo.getLeft();
-            }
+        Node rootNode = addNodeToGraph(tree.getRoot(), graph);
 
-        }
         graph.display();
     }
 
+    private static Node addNodeToGraph(Nodo<Character> nodo, Graph graph) {
+        Node graphNode = graph.addNode(String.valueOf(nodo.getData()));
+        graphNode.setAttribute("ui.label", graphNode.getId());
 
-        protected static String styleSheet =
+        if (nodo.getLeft() != null) {
+            Node leftNode = addNodeToGraph(nodo.getLeft(), graph);
+        }
+
+        if (nodo.getRight() != null) {
+            Node rightNode = addNodeToGraph(nodo.getRight(), graph);
+        }
+
+        return graphNode;
+    }
+
+
+
+    protected static String styleSheet =
                 "node {" +
                         "	shape: circle;" +
                         "	size: 40px;" +
