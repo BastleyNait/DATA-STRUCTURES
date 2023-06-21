@@ -1,0 +1,22 @@
+<component name="libraryTable">
+  <library name="gs-algo-2.0">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../../../REPOS/EDA/graphstream_examples/gs-algo-2.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../REPOS/EDA/graphstream_examples/gs-ui-swing-2.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../REPOS/EDA/graphstream_examples/gs-core-2.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/../../../REPOS/EDA/graphstream_examples/gs-ui-swing-2.0.jar!/" />
+      <root url="file://$PROJECT_DIR$/../lab01" />
+      <root url="file://$PROJECT_DIR$/../lab01/latex/src" />
+      <root url="file://$PROJECT_DIR$/../lab02" />
+      <root url="file://$PROJECT_DIR$/../lab02/latex/src" />
+      <root url="file://$PROJECT_DIR$/../lab03" />
+      <root url="file://$PROJECT_DIR$/../lab03/latex/src" />
+      <root url="file://$PROJECT_DIR$" />
+      <root url="file://$PROJECT_DIR$/../../PWEB02-B/lab01" />
+      <root url="file://$PROJECT_DIR$/../../../REPOS/EDA/graphstream_examples" />
+    </SOURCES>
+  </library>
+</component>

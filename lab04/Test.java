@@ -1,7 +1,12 @@
+import org.graphstream.graph.Edge;
 import org.graphstream.graph.Graph;
 import org.graphstream.graph.implementations.SingleGraph;
 import org.graphstream.graph.Node;
 import myExceptions.ExceptionNoFound;
+import org.graphstream.graph.IdAlreadyInUseException;
+import org.graphstream.ui.graphicGraph.GraphicEdge;
+
+import java.security.PublicKey;
 
 public class Test {
     public static void main(String[] args) throws ExceptionNoFound {
@@ -18,45 +23,61 @@ public class Test {
         }
     }
 
+    static Graph graph = new SingleGraph("GraphStream_Example_03");
+
     public static void crearArbol(Bst<Character> tree) {
         System.setProperty("org.graphstream.ui", "swing");
-        Graph graph = new SingleGraph("GraphStream_Example_03");
         graph.setAttribute("ui.stylesheet", styleSheet);
-
         Node rootNode = addNodeToGraph(tree.getRoot(), graph);
-
+        Edge ab = graph.addEdge("ab", graph.getNode(String.valueOf(tree.getRoot().getData())), graph.getNode(String.valueOf(tree.getRoot().getData())));
+        addEdges(tree);
         graph.display();
     }
 
     private static Node addNodeToGraph(Nodo<Character> nodo, Graph graph) {
         Node graphNode = graph.addNode(String.valueOf(nodo.getData()));
         graphNode.setAttribute("ui.label", graphNode.getId());
-
         if (nodo.getLeft() != null) {
             Node leftNode = addNodeToGraph(nodo.getLeft(), graph);
-        }
 
+        }
         if (nodo.getRight() != null) {
             Node rightNode = addNodeToGraph(nodo.getRight(), graph);
         }
-
         return graphNode;
     }
 
+    public static void addEdges(Bst<Character> tree) {
+        Nodo<Character> nodo = tree.getRoot();
+        Edge edgeI;
+        Edge edgeD;
+        while (nodo.getRight() != null && nodo.getLeft() != null) {
+            if (nodo.getRight() != null && nodo.getLeft() != null && edgeI != graph.getEdge(edgeI.getId()) && edgeD != graph.getEdge(edgeD.getId())) {
+                edgeI = graph.addEdge(String.valueOf(nodo.getData() + nodo.getRight().getData()), String.valueOf(nodo.getData()), String.valueOf(nodo.getRight().getData()), true);
+                edgeD = graph.addEdge(String.valueOf(nodo.getData() + nodo.getLeft().getData()), String.valueOf(nodo.getData()), String.valueOf(nodo.getLeft().getData()), true);
+            } else if (nodo.getRight() != null && nodo.getLeft() == null && edgeD != graph.getEdge(edgeD.getId())) {
+                edgeD = graph.addEdge(String.valueOf(nodo.getData() + nodo.getRight().getData()), String.valueOf(nodo.getData()), String.valueOf(nodo.getRight().getData()), true);
+                nodo = nodo.getRight();
+            } else if (nodo.getLeft() != null && nodo.getRight() == null && edgeI != graph.getEdge(edgeI.getId())) {
+                edgeI = graph.addEdge(String.valueOf(nodo.getData() + nodo.getLeft().getData()), String.valueOf(nodo.getData()), String.valueOf(nodo.getLeft().getData()), true);
+                nodo = nodo.getRight();
+            }
+        }
+    }
 
 
     protected static String styleSheet =
-                "node {" +
-                        "	shape: circle;" +
-                        "	size: 40px;" +
-                        " text-size: 12;" +
-                        "	fill-mode: plain;" +
-                        "	fill-color: skyblue;" +
-                        "	stroke-mode: plain;" +
-                        "	stroke-color: black;" +
-                        "	stroke-width: 1px;" +
-                        "}" +
-                        "edge { arrow-shape: arrow; arrow-size: 20px, 4px; }";
+            "node {" +
+                    "	shape: circle;" +
+                    "	size: 40px;" +
+                    " text-size: 12;" +
+                    "	fill-mode: plain;" +
+                    "	fill-color: skyblue;" +
+                    "	stroke-mode: plain;" +
+                    "	stroke-color: black;" +
+                    "	stroke-width: 1px;" +
+                    "}" +
+                    "edge { arrow-shape: arrow; arrow-size: 20px, 4px; }";
 
 
-    }
+}
