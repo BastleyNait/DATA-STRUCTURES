@@ -1,38 +1,38 @@
-public class Nodo<T> {
+public class Nodo <T> {
     private T data;
 
-    private Nodo<T> left;
+    private Nodo <T> left;
 
-    private Nodo<T> right;
+    private Nodo <T> right;
 
     public Nodo(T data) {
         this(data,null,null);
     }
-    public Nodo(T data, Nodo<T> left, Nodo<T> right) {
+    public Nodo(T data, Nodo <T> left, Nodo <T> right) {
         this.data = data;
         this.left = left;
         this.right = right;
     }
     public T getData() {
-        return data;
+        return this.data;
     }
 
     public void setData(T data) {
         this.data = data;
     }
-    public Nodo<T> getLeft() {
+    public Nodo <T> getLeft() {
         return this.left;
     }
 
-    public void setLeft(Nodo<T> left) {
+    public void setLeft(Nodo <T> left) {
         this.left = left;
     }
 
-    public Nodo<T> getRight() {
+    public Nodo <T> getRight() {
         return this.right;
     }
 
-    public void setRight(Nodo<T> right) {
+    public void setRight(Nodo <T> right) {
         this.right = right;
     }
 

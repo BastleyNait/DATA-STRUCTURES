@@ -1,17 +1,17 @@
 import myExceptions.ExceptionNoFound;
 
 public class Bst<T extends Comparable<T>> {
-    private Nodo<T> root;
+    private Nodo <T> root;
 
     public Bst() {
         this.root = null;
     }
 
-    public Nodo<T> getRoot() {
+    public Nodo <T> getRoot() {
         return root;
     }
 
-    public void setRoot(Nodo<T> root) {
+    public void setRoot(Nodo <T> root) {
         this.root = root;
     }
 
@@ -23,10 +23,10 @@ public class Bst<T extends Comparable<T>> {
         this.root = insert(x, this.root);
     }
 
-    private Nodo<T> insert(T x, Nodo<T> current) throws ExceptionNoFound {
-        Nodo<T> hoja = current;
+    private Nodo <T> insert(T x, Nodo <T> current) throws ExceptionNoFound {
+        Nodo <T> hoja = current;
         if (current == null) {
-            hoja = new Nodo<>(x);
+            hoja = new Nodo <>(x);
         } else {
             int bool = current.getData().compareTo(x);
             if (bool == 0)
@@ -40,14 +40,21 @@ public class Bst<T extends Comparable<T>> {
     }
 
     public T search(T x) throws ExceptionNoFound {
-        Nodo<T> aux = search(x, this.root);
+        Nodo <T> aux = search(x, this.root);
         if (aux == null) {
             throw new ExceptionNoFound("No se encontró el elemento");
         }
         return aux.getData();
     }
+    public Nodo <T> searchNode(T x) throws ExceptionNoFound {
+        Nodo <T> aux = search(x, this.root);
+        if (aux == null) {
+            throw new ExceptionNoFound("No se encontró el elemento");
+        }
+        return aux;
+    }
 
-    private Nodo<T> search(T x, Nodo<T> current) {
+    private Nodo <T> search(T x, Nodo <T> current) {
         if (current == null) {
             return null;
         } else {
@@ -61,7 +68,7 @@ public class Bst<T extends Comparable<T>> {
         }
     }
 
-    private T getMin(Nodo<T> node) {
+    private T getMin(Nodo <T> node) {
         T minKey = node.getData();
         while (node.getLeft() != null) {
             minKey = node.getLeft().getData();
@@ -73,7 +80,7 @@ public class Bst<T extends Comparable<T>> {
     public T getMin() throws ExceptionNoFound {
         if (isEmpty())
             throw new ExceptionNoFound("el arbol esta vacio");
-        Nodo<T> current = root;
+        Nodo <T> current = root;
         while (current.getLeft() != null) {
             current = current.getLeft();
         }
@@ -83,7 +90,7 @@ public class Bst<T extends Comparable<T>> {
     public T getMax() throws ExceptionNoFound {
         if (isEmpty())
             throw new ExceptionNoFound("el arbol esta vacio");
-        Nodo<T> current = root;
+        Nodo <T> current = root;
         while (current.getRight() != null) {
             current = current.getRight();
         }
@@ -95,17 +102,18 @@ public class Bst<T extends Comparable<T>> {
             throw new ExceptionNoFound("El nodo no tiene padre");
         return findParent(x, this.root).getData();
     }
-    private Nodo<T> findParent(T x, Nodo<T> current) {
+
+    private Nodo <T> findParent(T x, Nodo <T> current) {
         if (current == null || current.getData().equals(x))
             return null;
         /*
-        * comparamos si el nodo izq o der del nodo actual es igual al dato que le
-        * pasamos
+         * comparamos si el nodo izq o der del nodo actual es igual al dato que le
+         * pasamos
          */
         if (current.getLeft() != null && current.getLeft().getData().equals(x) || current.getRight() != null && current.getRight().getData().equals(x))
             return current;
         /*
-        * Si no es así volvemos a llamar a la funcion hasta que encontremos
+         * Si no es así volvemos a llamar a la funcion hasta que encontremos
          */
         int bool = x.compareTo(current.getData());
         if (bool < 0)
@@ -117,7 +125,8 @@ public class Bst<T extends Comparable<T>> {
     public void remove(T x) throws ExceptionNoFound {
         this.root = remove(x, this.root);
     }
-    private Nodo<T> remove(T x, Nodo<T> current) throws ExceptionNoFound {
+
+    private Nodo <T> remove(T x, Nodo <T> current) throws ExceptionNoFound {
         if (current == null)
             throw new ExceptionNoFound("No se encontró el elemento");
 
@@ -138,14 +147,15 @@ public class Bst<T extends Comparable<T>> {
 
         return current;
     }
-    public void inOrden(){
-        if(isEmpty())
+
+    public void inOrden() {
+        if (isEmpty())
             System.out.println("arbol vaceo papay");
         else
             inOrden(this.root);
     }
 
-    public void inOrden(Nodo<T> current) {
+    public void inOrden(Nodo <T> current) {
         if (current.getLeft() != null)
             inOrden(current.getLeft());
         System.out.println(current);
