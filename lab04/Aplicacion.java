@@ -57,7 +57,7 @@ public class Aplicacion {
         bst.remove(eliminar);
         graph.removeNode(eliminar);
         addNodesToGraph(bst.getRoot(), graph2, 0.0, 0.0);
-
+        //comentario
         System.out.println("Minimo valor: " + bst.getMin());
         Node node1 = graph2.addNode(String.valueOf(bst.getMin()) + "-");
         node1.setAttribute("ui.label", node1.getId());
