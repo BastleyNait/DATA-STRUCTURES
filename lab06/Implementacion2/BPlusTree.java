@@ -46,5 +46,31 @@ public class BPlusTree {
         }
 
         return index < currentNode.keys.size() && currentNode.keys.get(index) == key;
+        
+    }
+
+    public void delete(int key) {
+        // Buscar el nodo hoja que contiene la clave a eliminar
+        BPlusNode leafNode = findLeafNode(key);
+
+        // Eliminar la clave del nodo hoja
+        boolean keyDeleted = leafNode.deleteKey(key);
+
+        // Reestructurar el árbol si es necesario
+        if (keyDeleted && leafNode.keys.size() < MIN_KEYS) {
+            // Verificar si el nodo hoja está desequilibrado
+            if (leafNode != root) {
+                // Si el nodo hoja no es la raíz, intentar redistribuir o fusionar
+                BPlusNode siblingNode = getSiblingNode(leafNode);
+                if (siblingNode != null && siblingNode.keys.size() > MIN_KEYS) {
+                    redistributeNodes(leafNode, siblingNode);
+                } else {
+                    mergeNodes(leafNode, siblingNode);
+                }
+            } else if (root.keys.isEmpty()) {
+                // Si la raíz se ha quedado vacía, eliminarla y asignar el primer hijo como nueva raíz
+                root = leafNode.children.get(0);
+            }
+        }
     }
 }
