@@ -9,6 +9,38 @@ public class BPlusTree {
         root = new BPlusNode();
     }
 
+    public void printTree() {
+    if (root != null) {
+        printTreeRecursive(root, 0);
+    }
+}
+
+private void printTreeRecursive(BPlusNode node, int level) {
+    if (node == null) {
+        return;
+    }
+
+    for (int i = 0; i < node.keys.size(); i++) {
+        if (!node.isLeaf) {
+            printTreeRecursive(node.children.get(i), level + 1);
+        }
+        printNodeInfo(node.keys.get(i), level);
+    }
+
+    // Imprimir el último hijo (si existe) de un nodo no hoja
+    if (!node.isLeaf) {
+        printTreeRecursive(node.children.get(node.keys.size()), level + 1);
+    }
+}
+
+private void printNodeInfo(int key, int level) {
+    StringBuilder indent = new StringBuilder();
+    for (int i = 0; i < level; i++) {
+        indent.append("  "); // Dos espacios por nivel para indentación
+    }
+    System.out.println(indent.toString() + key);
+}
+
     // Método para insertar una nueva clave en el árbol
     public void insert(int key) {
         BPlusNode leafNode = findLeafNode(key);
@@ -28,6 +60,7 @@ public class BPlusTree {
         }
         return currentNode;
     }
+
     // Método para buscar una clave en el árbol
     public boolean search(int key) {
         BPlusNode currentNode = root;
@@ -46,31 +79,6 @@ public class BPlusTree {
         }
 
         return index < currentNode.keys.size() && currentNode.keys.get(index) == key;
-        
-    }
 
-    public void delete(int key) {
-        // Buscar el nodo hoja que contiene la clave a eliminar
-        BPlusNode leafNode = findLeafNode(key);
-
-        // Eliminar la clave del nodo hoja
-        boolean keyDeleted = leafNode.deleteKey(key);
-
-        // Reestructurar el árbol si es necesario
-        if (keyDeleted && leafNode.keys.size() < MIN_KEYS) {
-            // Verificar si el nodo hoja está desequilibrado
-            if (leafNode != root) {
-                // Si el nodo hoja no es la raíz, intentar redistribuir o fusionar
-                BPlusNode siblingNode = getSiblingNode(leafNode);
-                if (siblingNode != null && siblingNode.keys.size() > MIN_KEYS) {
-                    redistributeNodes(leafNode, siblingNode);
-                } else {
-                    mergeNodes(leafNode, siblingNode);
-                }
-            } else if (root.keys.isEmpty()) {
-                // Si la raíz se ha quedado vacía, eliminarla y asignar el primer hijo como nueva raíz
-                root = leafNode.children.get(0);
-            }
-        }
     }
 }
