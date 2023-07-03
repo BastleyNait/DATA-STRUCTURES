@@ -28,4 +28,23 @@ public class BPlusTree {
         }
         return currentNode;
     }
+    // Método para buscar una clave en el árbol
+    public boolean search(int key) {
+        BPlusNode currentNode = root;
+        while (!currentNode.isLeaf) {
+            int index = 0;
+            while (index < currentNode.keys.size() && key >= currentNode.keys.get(index)) {
+                index++;
+            }
+            currentNode = currentNode.children.get(index);
+        }
+
+        // Buscar la clave en el nodo hoja actual
+        int index = 0;
+        while (index < currentNode.keys.size() && key > currentNode.keys.get(index)) {
+            index++;
+        }
+
+        return index < currentNode.keys.size() && currentNode.keys.get(index) == key;
+    }
 }
