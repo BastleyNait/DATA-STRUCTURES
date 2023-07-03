@@ -45,13 +45,12 @@ public class BPlusTree {
     }
 
     private void insertNonFull(Node node, int key) {
-        int index = findIndex(node.keys, key);
-
         if (node.isLeaf) {
-            node.keys.add(index, key);
+            insertToLeaf(node, key);
         } else {
+            int index = findIndex(node.keys, key);
             Node child = node.children.get(index);
-            if (child.keys.size() == ORDER) {
+            if (child.keys.size() == ORDER - 1) {
                 splitChild(node, index);
                 if (key > node.keys.get(index)) {
                     index++;
@@ -59,6 +58,11 @@ public class BPlusTree {
             }
             insertNonFull(node.children.get(index), key);
         }
+    }
+
+    private void insertToLeaf(Node node, int key) {
+        int index = findIndex(node.keys, key);
+        node.keys.add(index, key);
     }
 
     private void splitChild(Node parentNode, int index) {
@@ -80,10 +84,9 @@ public class BPlusTree {
 
         for (int i = ORDER - 1; i >= ORDER / 2; i--) {
             childNode.keys.remove(i);
-            if (!childNode.isLeaf) {
-                childNode.children.remove(i);
-            }
         }
+
+        childNode.children.subList(ORDER / 2 + 1, ORDER).clear();
     }
 
     // Método para eliminar un valor del árbol B+

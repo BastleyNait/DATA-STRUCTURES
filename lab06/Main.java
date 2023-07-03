@@ -5,8 +5,6 @@ public class Main {
         BPlusTree bPlusTree = new BPlusTree();
         insertar(bPlusTree);
         encontrarMaxyMin(bPlusTree);
-        encontrarPadre(bPlusTree);
-        encontrarHijo(bPlusTree);
         encontrarNodo(bPlusTree);
         bPlusTree.print();
     }
