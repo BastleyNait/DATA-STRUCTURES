@@ -163,5 +163,15 @@ public class BPlusNode {
         // realizamos la inserción del nodo resultado en el padre
         parent.split();
     }
+    public void insertKey(int key) {
+        int index = 0;
+        while (index < keys.size() && key > keys.get(index)) {
+            index++;
+        }
+        keys.add(index, key);
+        if (keys.size() > MAX_KEYS) {
+            split();
+        }
+    }
 
 }
