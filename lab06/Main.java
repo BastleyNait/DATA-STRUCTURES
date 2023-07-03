@@ -3,11 +3,11 @@ public class Main {
     static Scanner sc = new Scanner(System.in);
     public static void main(String[] args) {
         BPlusTree bPlusTree = new BPlusTree();
-
         insertar(bPlusTree);
         encontrarMaxyMin(bPlusTree);
-        
-
+        encontrarPadre(bPlusTree);
+        encontrarHijo(bPlusTree);
+        encontrarNodo(bPlusTree);
         bPlusTree.print();
     }
     public static void insertar(BPlusTree tree) {
@@ -41,7 +41,7 @@ public class Main {
     public static void encontrarNodo(BPlusTree tree) {
         System.out.println("que nodo quiere saber si se encuentra en el arbol?");
         int nodo = sc.nextInt();
-        tree.search(nodo);
+        System.out.println(tree.search(nodo));
     }
 
 }
