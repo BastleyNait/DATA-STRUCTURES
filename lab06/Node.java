@@ -15,4 +15,9 @@ public class Node {
             this();
             this.keys.add(key);
         }
+        @Override
+        public String toString() {
+            return "keys: " + this.keys.toString() +
+                 "\nhijos: " + this.children.toString() ;
+        }
     }

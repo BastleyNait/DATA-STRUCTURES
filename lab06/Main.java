@@ -5,11 +5,8 @@ public class Main {
         BPlusTree bPlusTree = new BPlusTree();
 
         insertar(bPlusTree);
-
-        System.out.println("¿El número 20 está en el árbol? " + bPlusTree.search(20));
-        System.out.println("¿El número 15 está en el árbol? " + bPlusTree.search(15));
-        System.out.println("Mínimo valor del árbol: " + bPlusTree.min());
-        System.out.println("Máximo valor del árbol: " + bPlusTree.max());
+        encontrarMaxyMin(bPlusTree);
+        
 
         bPlusTree.print();
     }
@@ -32,12 +29,19 @@ public class Main {
     public static void encontrarPadre(BPlusTree tree){
         System.out.println("de quien quiere encontrar su padre");
         int nodo = sc.nextInt();
-        tree.father(new Node(nodo));
+        System.out.println(tree.father(new Node(nodo)));
         
     }
     public static void encontrarHijo(BPlusTree tree){
         System.out.println("de quien quiere encontrar su hijo");
         int nodo = sc.nextInt();
-        tree.father(new Node(nodo));
+        System.out.println(tree.father(new Node(nodo)));
     }
+
+    public static void encontrarNodo(BPlusTree tree) {
+        System.out.println("que nodo quiere saber si se encuentra en el arbol?");
+        int nodo = sc.nextInt();
+        tree.search(nodo);
+    }
+
 }
