@@ -22,7 +22,7 @@ public class Main {
         int c = 0;
         System.out.println("ingrese los numeros:");
         while (c<num) {
-            int nddo = 
+            int nddo = ra
         }
     }
 }
