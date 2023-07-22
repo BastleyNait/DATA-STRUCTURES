@@ -7,5 +7,8 @@ public class test {
         miTrie.insert("antecesor");
         miTrie.insert("anden");
         System.out.println(miTrie.numDePalabras());
+        miTrie.search("and");
+        miTrie.search("pocor");
+        miTrie.search("an");
     }
 }

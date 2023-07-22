@@ -25,6 +25,26 @@ public class Trie<T> {
         return false;
     }
 
+    public boolean search(String key) {
+        NodeTrie<T> aux = this.root;
+
+        for (int i = 0; i < key.length(); i++) {
+            if (aux.getChildren()[key.charAt(i) - 97] == null) {
+                System.out.println("No se encontro la palabra");
+                return false;
+            }
+            else {
+                aux = aux.getChildren()[key.charAt(i) - 97];
+                if (aux.isEndOfWord()) {
+                    System.out.println("la palabra si se encuentra en el arbol");
+                    return true;
+                }
+            }
+        }
+        System.out.println("No se encontro la palabra");
+        return false;
+    }
+
     public int numDePalabras() {
         return this.contPala;
     }
