@@ -5,7 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 
-public class Login extends JFrame {
+public class TexTMoD extends JFrame {
     private JPanel mainPanel;
     private JTextField Reemplar;
     private JButton btReem;
@@ -16,7 +16,7 @@ public class Login extends JFrame {
     private JTextField Buscar;
     private JTextArea Texto;
 
-    public Login() {
+    public TexTMoD() {
 
         setContentPane(mainPanel);
         setTitle("TexT MoD");
@@ -39,6 +39,6 @@ public class Login extends JFrame {
 
     public static void main(String[] args) {
         FlatMaterialDarkerIJTheme.setup();
-        new Login();
+        new TexTMoD();
     }
 }
