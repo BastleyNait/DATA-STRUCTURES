@@ -10,5 +10,6 @@ public class test {
         miTrie.search("and");
         miTrie.search("pocor");
         miTrie.search("an");
+        miTrie.search("ant");
     }
 }
