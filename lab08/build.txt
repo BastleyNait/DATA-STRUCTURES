@@ -1,4 +1,4 @@
 Para windows
 javac -cp ".;flatlaf-3.1.1.jar;flatlaf-intellij-themes-3.1.1.jar;gs-core-2.0.jar;gs-ui-swing-2.0.jar" *.java
 java -cp ".;flatlaf-3.1.1.jar;flatlaf-intellij-themes-3.1.1.jar;gs-core-2.0.jar;gs-ui-swing-2.0.jar" HuffmanApp
-Para linux
+*Para linux
