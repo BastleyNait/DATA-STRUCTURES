@@ -202,7 +202,6 @@ public class TextCompressor extends javax.swing.JFrame {
         HuffmanTree arbol = new HuffmanTree(txPlano.getText());
         String codificado = arbol.encode();
         taComp.setText(codificado);
-        arbol.printCodes();
         crearGrafo(txPlano.getText());
     }
 
